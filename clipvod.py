@@ -3,19 +3,6 @@ import os, json, subprocess, sys, argparse
 root = os.getcwd()
 slash = '\\' if sys.platform == 'win32' else '/'
 
-def clip_create():
-    clipj = dict()
-    files = [f for f in os.listdir(root) if os.path.isfile(f)]
-    # Keep only files ending with .mp4 or .mkv 
-    for f in files:
-        n = f.split('.')
-        if n[1] == 'mkv' or n[1] == 'mp4':
-            clipj[f] = {}
-
-    print('vods to clip', clipj)
-    with open('clipvods.json', 'w') as f:
-        f.write(json.dumps(clipj, indent=4))
-
 def create_dir(dir):
     if not os.path.exists(dir):
             os.makedirs(os.getcwd() + slash + dir)
